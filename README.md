@@ -10,7 +10,7 @@
 
 ## 🎯 **Aperçu - Installation réelle 17/02/2026**
 
-**MPV-Station** documente fidèlement l'installation **réelle** effectuée le **17 février 2026** à **17h35-20h50 CET** par **bbrod** (DevOps Montpellier) :
+**MPV-Station** documente fidèlement l'installation **réelle** effectuée le **17 février 2026** à **17h35-20h50 CET** par **valorisa** (DevOps Montpellier) :
 
 ```
 📁 Localisation exacte : C:\Users\bbrod\Projets\mpv\
