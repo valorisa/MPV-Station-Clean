@@ -1,0 +1,6 @@
+*.exe filter=lfs diff=lfs merge=lfs -text
+video.* filter=lfs diff=lfs merge=lfs -text
+mpv.exe filter=lfs diff=lfs merge=lfs -text
+yt-dlp.exe filter=lfs diff=lfs merge=lfs -text
+video.mp4 filter=lfs diff=lfs merge=lfs -text
+d3dcompiler_43.dll filter=lfs diff=lfs merge=lfs -text
