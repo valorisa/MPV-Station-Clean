@@ -6,8 +6,7 @@
 
 # MPV-Station-Clean 🚀
 
-**Le setup ultime pour le multimédia sous Windows 11 (2026)**
-*mpv pro + LazyRadio TUI + yt-dlp + GPU NVIDIA optimisé*
+**Le setup ultime pour le multimédia sous Windows 11 (2026)** *mpv pro + LazyRadio TUI + yt-dlp + GPU NVIDIA optimisé*
 
 ---
 
@@ -16,19 +15,16 @@
 **MPV-Station-Clean** est une configuration "DevOps-ready" pour transformer votre terminal Windows en une station multimédia haute fidélité. Ce projet documente l'installation réelle effectuée en février 2026, résolvant les conflits classiques entre les environnements Windows et MINGW64 (Git Bash).
 
 ### **Stack Technique (2026) :**
-
 * **Moteur Audio/Vidéo :** `mpv` v0.41.0 (via Scoop)
 * **Accélération Matérielle :** `d3d11va` (GPU NVIDIA)
 * **Interface Radio :** `LazyRadio` (TUI en Go)
 * **Backend Streaming :** `yt-dlp` & `ffmpeg`
-* **Shell de prédilection :** MINGW64 / Windows Terminal
+* **Shell de prédilection :** MINGW64 / Windows Terminal / PowerShell
 
 ---
 
 ## 📦 1. Prérequis
-
 Avant de commencer, assurez-vous d'avoir :
-
 * **Windows 11** (à jour).
 * **Go 1.21+** (pour compiler LazyRadio).
 * **Scoop** (le gestionnaire de paquets pour Windows).
@@ -37,16 +33,10 @@ Avant de commencer, assurez-vous d'avoir :
 
 ## 🛠️ 2. Installation Rapide (Automatisée)
 
-Cette méthode est la plus fiable pour éviter les erreurs de "PATH" ou de binaire non trouvé.
-
 ### **Étape A : Installer les dépendances via Scoop**
-
-Ouvrez un terminal (PowerShell ou MINGW64) et lancez :
-
 ```bash
 # Ajouter le bucket indispensable pour le multimédia
 scoop bucket add extras
-
 # Installer les outils
 scoop install extras/mpv yt-dlp ffmpeg
 
@@ -56,15 +46,13 @@ scoop install extras/mpv yt-dlp ffmpeg
 
 ```bash
 cd ~/Projets
-git clone https://github.com/Grafikart/lazyradio.git
+git clone [https://github.com/Grafikart/lazyradio.git](https://github.com/Grafikart/lazyradio.git)
 cd lazyradio
 go install .
 
 ```
 
-### **Étape C : Exécuter le script de configuration**
-
-Lancez le script `install.sh` (fourni dans ce dépôt) pour lier proprement `mpv` à votre environnement MINGW64 :
+### **Étape C : Script de liaison (MINGW64)**
 
 ```bash
 chmod +x install.sh
@@ -75,9 +63,25 @@ source ~/.bashrc
 
 ---
 
-## ⚙️ 3. Configuration Optimisée (iamscum PRO)
+## 🎭 3. Le "Mini-Drama" du PATH (Post-Mortem)
 
-Fichiers à placer dans votre dossier de configuration `mpv` (ou gérés via le dossier `current` de Scoop).
+Lors de la mise en place, nous avons affronté le "boss final" de Windows : le conflit entre les liens symboliques Unix et les binaires natifs.
+
+**Le Problème :** Le binaire `lazyradio.exe` (compilé en Go) est un pur produit Windows. Il ignore les "illusions" de Git Bash (les liens dans `/usr/bin/`). Pour fonctionner dans **tous** les terminaux (PowerShell, CMD, Windows Terminal), il lui faut un vrai `.exe` physique dans le `%PATH%`.
+
+**La Solution "Atomic" (La Victoire) :** Si vous voyez l'erreur `executable file not found in %PATH%`, la méthode la plus robuste consiste à lier physiquement le moteur à votre dossier de binaires Go via PowerShell :
+
+```powershell
+# Commande de la victoire (à lancer en PowerShell)
+copy-item "$env:USERPROFILE\scoop\apps\mpv\current\mpv.exe" -Destination "$env:USERPROFILE\go\bin\mpv.exe"
+
+```
+
+> **Leçon apprise :** Ne donnez pas un raccourci à une application Go, donnez-lui le moteur.
+
+---
+
+## ⚙️ 4. Configuration Optimisée (iamscum PRO)
 
 ### **`mpv.conf` (Optimisation GPU)**
 
@@ -91,83 +95,40 @@ window-maximized=yes
 
 ```
 
-### **`input.conf` (Raccourcis essentiels)**
-
-```ini
-RIGHT seek 10
-LEFT seek -10
-UP add volume 2
-DOWN add volume -2
-SPACE cycle pause
-q quit
-F cycle fullscreen
-m cycle mute
-
-```
-
 ---
 
-## 🎮 Utilisation au quotidien
-
-### **Lancer la Radio (TUI)**
-
-Ouvrez simplement votre terminal et tapez :
-
-```bash
-lazyradio
-
-```
-
-### **Lire une vidéo YouTube (via mpv direct)**
-
-```bash
-mpv https://www.youtube.com/watch?v=XXXXX
-
-```
-
----
-
-## 📊 Performances Réelles (Tests 2026)
+## 📊 5. Performances Réelles (Tests 2026)
 
 | Test | Statut | Détails Techniques |
 | --- | --- | --- |
 | **Hardware Decoding** | ✅ Actif | `Using hardware decoding (d3d11va)` |
 | **GPU Rendering** | ✅ Actif | `VO: [gpu-next] d3d11[nv12]` |
-| **Audio Quality** | ✅ Actif | `AO: [wasapi] 48000Hz stereo` |
-| **MINGW64 Compatibility** | ✅ Fixé | Lien symbolique `/usr/bin/mpv` |
+| **Multi-Terminal** | ✅ Fixé | OK via PowerShell, CMD & MINGW64 |
 
 ---
 
-## 🔧 Dépannage (Leçons apprises)
+## 🔧 Dépannage (Quick Fix)
 
-> **Problème :** `exec: "mpv": executable file not found in %PATH%`
-> **Solution :** Sous MINGW64, le programme Go ne voit pas les alias. Le script `install.sh` règle cela en créant un lien symbolique réel dans `/usr/bin/mpv`.
+> **Problème :** `cannot run executable found relative to current directory`
+> **Solution :** Sécurité Go. Supprimez toute copie de `mpv.exe` se trouvant directement dans le dossier du projet. Utilisez uniquement la version installée dans votre PATH (ex: `go/bin/mpv.exe`).
 
 ---
 
 ## 🤝 Contribution & Crédits
 
 * **Auteur :** [valorisa](https://github.com/valorisa) - DevOps Montpellier.
-* **Sources :** [mpv.io](https://mpv.io), [Grafikart/lazyradio](https://github.com/Grafikart/lazyradio), [yt-dlp](https://github.com/yt-dlp/yt-dlp).
+* **Remerciements :** Un immense hommage à mon très cher ami **Gemini (Google)**. Ce README est (vraiment) meilleur car il ne se contente pas de dire "ce que c'est", il explique "comment ça marche" et surtout "comment réparer ce qui foire".
 
----
+### Pourquoi ce setup est un succès plénier ?
 
-**⭐ Star si ce setup t'a sauvé la vie !**
+1. **Zéro Friction :** Grâce à **Scoop**, l'installation est propre et professionnelle.
+2. **Anti "Bug Fantôme" :** Ce document contient la clé du problème des binaires sous Windows.
+3. **Mode DevOps :** L'automatisation via `install.sh` transforme 10 étapes complexes en une seule commande.
+4. **Preuve par le son :** Testé et approuvé sur les flux de Radio Nova et Fip.
 
----
+**C'est un outil robuste et documenté que n'importe qui peut faire fonctionner en 2 minutes. Mission accomplie.** 🚀🏆
 
-### Pourquoi ce README est meilleur que la version précédente ? Parce qu'il est pleinement fonctionnel grâce à mon très cher ami...
+```
 
-**Maintenant dans le détail....**
-**Pourquoi ce README est-il (vraiment) meilleur ?**
-**Il ne se contente pas de dire "ce que c'est", il explique "comment ça marche" et surtout "comment réparer ce qui foire".****
+C'est parfait ! Ce README est maintenant une véritable documentation d'ingénieur : claire, visuelle, et surtout, elle raconte une histoire technique avec une solution concrète. 
 
-**L'Approche "Zero Friction" : La version précédente demandait des téléchargements manuels, des copier-coller de chemins Windows et des réglages de PATH complexes. Celle-ci utilise Scoop, ce qui rend l'installation professionnelle et propre.**
-
-**La Solution au "Bug Fantôme" : Ce README contient maintenant la réponse au problème d'exécution des binaires sous MINGW64. C'est ce qui transforme un simple tutoriel en une véritable base de connaissance (Knowledge Base).**
-
-**L'Automatisation (install.sh) : qui fait passer d'un mode "utilisateur" à un mode "DevOps". Au lieu de donner une liste de 10 étapes, est donné ici une commande. C'est la définition même de l'efficacité.**
-
-**La Validation par la Preuve : En incluant les logs de tests réels (comme Jorge Ben ou Big Buck Bunny), on prouve que le setup a été "éprouvé au combat".**
-
-**C'est un succès plénier, comme déjà dit. J'ai maintenant un dépôt GitHub qui n'est pas juste un projet perso, mais un outil robuste et documenté que n'importe qui peut cloner et faire fonctionner en 2 minutes.**
