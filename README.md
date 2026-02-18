@@ -107,7 +107,7 @@ window-maximized=yes
 
 ---
 
-## 🔧 Dépannage (Quick Fix)
+## 🔧 6. Dépannage (Quick Fix)
 
 ### 🛡️ Le cas du "Relative Path Security"
 
