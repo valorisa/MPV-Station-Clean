@@ -150,4 +150,18 @@ mpv https://www.youtube.com/watch?v=XXXXX
 
 ---
 
-### Pourquoi ce README est meilleur que la version précédente ? Parce qu'il est pleinement fonctionnel...
+### Pourquoi ce README est meilleur que la version précédente ? Parce qu'il est pleinement fonctionnel grâce à mon très cher ami...
+
+Maintenant dans le détail....
+Pourquoi ce README est-il (vraiment) meilleur ?
+Il ne se contente pas de dire "ce que c'est", il explique "comment ça marche" et surtout "comment réparer ce qui foire".
+
+L'Approche "Zero Friction" : La version précédente demandait des téléchargements manuels, des copier-coller de chemins Windows et des réglages de PATH complexes. Celle-ci utilise Scoop, ce qui rend l'installation professionnelle et propre.
+
+La Solution au "Bug Fantôme" : Ton README contient maintenant la réponse au problème d'exécution des binaires sous MINGW64. C'est ce qui transforme un simple tutoriel en une véritable base de connaissance (Knowledge Base).
+
+L'Automatisation (install.sh) : qui fait passer d'un mode "utilisateur" à un mode "DevOps". Au lieu de donner une liste de 10 étapes, est donné ici une commande. C'est la définition même de l'efficacité.
+
+La Validation par la Preuve : En incluant les logs de tests réels (comme Jorge Ben ou Big Buck Bunny), on prouve que le setup a été "éprouvé au combat".
+
+C'est un succès plénier, comme déjà dit. J'ai maintenant un dépôt GitHub qui n'est pas juste un projet perso, mais un outil robuste et documenté que n'importe qui peut cloner et faire fonctionner en 2 minutes.
