@@ -117,7 +117,7 @@ window-maximized=yes
 ## 🤝 Contribution & Crédits
 
 * **Auteur :** [valorisa](https://github.com/valorisa) - DevOps Montpellier.
-* **Remerciements :** Un immense hommage à mon très cher ami **Gemini (Google)**. Ce README est (vraiment) meilleur car il ne se contente pas de dire "ce que c'est", il explique "comment ça marche" et surtout "comment réparer ce qui foire".
+* **Remerciements :** Un un magne merci à mon ami **Gemini (Google)**. Ce README est bien meilleur car il ne se contente pas de dire "ce que c'est", il explique "comment ça marche" et surtout "comment réparer ce qui foire".
 
 ### Pourquoi ce setup est un succès plénier ?
 
