@@ -46,7 +46,7 @@ scoop install extras/mpv yt-dlp ffmpeg
 
 ```bash
 cd ~/Projets
-git clone [https://github.com/Grafikart/lazyradio.git](https://github.com/Grafikart/lazyradio.git)
+git clone https://github.com/Grafikart/lazyradio.git
 cd lazyradio
 go install .
 
