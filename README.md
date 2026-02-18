@@ -109,7 +109,7 @@ window-maximized=yes
 
 ## 🔧 6. Dépannage (Quick Fix)
 
-### 🛡️ Le cas du "Relative Path Security"
+### 🛡️ 6.1 Le cas du "Relative Path Security"
 
 **Problème :** `Error: exec: "mpv": cannot run executable found relative to current directory`
 
@@ -122,7 +122,7 @@ window-maximized=yes
 
 ---
 
-### 🚀 Ce que cela ajoute au README
+### 🚀 6.2 Ce que cela ajoute au README
 
 - **La Pédagogie :** Explication du *Pourquoi* (la sécurité Go), ce qui valorise l’expertise DevOps.  
 - **La Clarté :** Les étapes de nettoyage et de validation sont actionnables immédiatement.  
@@ -130,7 +130,7 @@ window-maximized=yes
 
 ---
 
-## 🤝 Contribution & Crédits
+## 🤝 7. Contribution & Crédits
 
 * **Auteur :** [valorisa](https://github.com/valorisa) - DevOps Montpellier.
 * **Remerciements :** Un magne merci à mon ami **Google**. Ce README est bien meilleur car il ne se contente pas de dire "ce que c'est", il explique "comment ça marche" et surtout "comment réparer ce qui foire".
