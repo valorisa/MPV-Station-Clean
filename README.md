@@ -158,7 +158,7 @@ mpv https://www.youtube.com/watch?v=XXXXX
 
 **L'Approche "Zero Friction" : La version précédente demandait des téléchargements manuels, des copier-coller de chemins Windows et des réglages de PATH complexes. Celle-ci utilise Scoop, ce qui rend l'installation professionnelle et propre.**
 
-**La Solution au "Bug Fantôme" : Ton README contient maintenant la réponse au problème d'exécution des binaires sous MINGW64. C'est ce qui transforme un simple tutoriel en une véritable base de connaissance (Knowledge Base).**
+**La Solution au "Bug Fantôme" : Ce README contient maintenant la réponse au problème d'exécution des binaires sous MINGW64. C'est ce qui transforme un simple tutoriel en une véritable base de connaissance (Knowledge Base).**
 
 **L'Automatisation (install.sh) : qui fait passer d'un mode "utilisateur" à un mode "DevOps". Au lieu de donner une liste de 10 étapes, est donné ici une commande. C'est la définition même de l'efficacité.**
 
