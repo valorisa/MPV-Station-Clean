@@ -1,3 +1,9 @@
+![Windows 11](https://img.shields.io/badge/Windows%2011-Compatible-blue?logo=windows)
+![NVIDIA](https://img.shields.io/badge/GPU-NVIDIA%20Optimized-green?logo=nvidia)
+![Go](https://img.shields.io/badge/Language-Go-00ADD8?logo=go)
+![mpv](https://img.shields.io/badge/Engine-mpv%20v0.41.0-black?logo=mpv)
+![DevOps](https://img.shields.io/badge/Setup-Automated-orange)
+
 # MPV-Station-Clean 🚀
 
 **Le setup ultime pour le multimédia sous Windows 11 (2026)**
