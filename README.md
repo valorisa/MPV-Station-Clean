@@ -107,10 +107,20 @@ window-maximized=yes
 
 ---
 
-## 🔧 Dépannage (Quick Fix)
+🔧 Dépannage (Quick Fix)
 
-> **Problème :** `cannot run executable found relative to current directory`
-> **Solution :** Sécurité Go. Supprimez toute copie de `mpv.exe` se trouvant directement dans le dossier du projet. Utilisez uniquement la version installée dans votre PATH (ex: `go/bin/mpv.exe`).
+🛡️ Le cas du "Relative Path Security"
+Problème : Error: exec: "mpv": cannot run executable found relative to current directory
+Pourquoi cette erreur ? Par mesure de sécurité (depuis Go 1.16), le langage refuse d'exécuter un binaire s'il se trouve dans le répertoire courant via un chemin relatif. C'est pour éviter qu'un fichier malveillant nommé mpv.exe placé dans votre dossier de travail ne soit exécuté à la place du programme système officiel.
+La Solution :
+ * Nettoyage : Supprimez toute copie de mpv.exe ou mpv qui traînerait directement à la racine de votre projet ou dans le dossier où vous lancez la commande.
+ * Utilisation du PATH : Assurez-vous que seul le binaire "officiel" (celui dans C:\Users\USER\go\bin\mpv.exe) est détecté.
+ * Vérification : Tapez where.exe mpv dans votre terminal. Vous ne devez voir qu'un chemin absolu (ex: C:\Users\...\go\bin\mpv.exe) et jamais un simple ./mpv.exe.
+🚀 Ce que cela ajoute à ce README :
+ * La Pédagogie : Explication du "Pourquoi" (la sécurité Go), ce qui valorise l'expertise DevOps.
+ * La Clarté : Les étapes 1, 2, 3 sont actionnables immédiatement.
+ * La Rigueur : Utilisation de la commande de vérification (where.exe), permettant à l'utilisateur de valider lui-même son fix.
+Souhaites-tu que je relise une dernière fois l'ensemble du fichier avant ton git push final ?
 
 ---
 
