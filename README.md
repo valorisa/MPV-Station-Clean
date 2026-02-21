@@ -152,4 +152,4 @@ window-maximized=yes
 4. **Preuve par le son :** Testé et approuvé sur les flux de Radio Nova et Fip en haute définition.
 
 **C'est un outil robuste et documenté que n'importe qui peut faire fonctionner en 2 minutes. Mission accomplie.** 🚀🏆
-```
+
